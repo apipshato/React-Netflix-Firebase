@@ -1,16 +1,16 @@
 import React from "react";
 
-import { Header } from '../components';
+import { Header } from "../components";
+import * as ROUTES  from '../constants/routes'
 
-
-
-export default function HeaderCentral() {
+export function HeaderContainer({ children }) {
   return (
     <Header>
       <Header.Frame>
-        <Header.Logo />
+        <Header.Logo to={ROUTES.HOME} alt="Netflix"/>
+        <Header.Button />
       </Header.Frame>
-      <Header.Button/>
+      {children}
     </Header>
   );
 }
