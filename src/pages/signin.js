@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { FirebaseContext } from "../context/firebase";
+
 import { FooterContainer } from "../containers/footer";
 import { HeaderContainer } from "../containers/header";
 import { Form } from "../components";
+import * as ROUTES from "../constants/routes";
 
 export default function Signin() {
-  const [emailAddress, setEmailAddress] = useState();
-  const [password, setPassword] = useState();
+  const history = useHistory();
+    const { firebase } = useContext(FirebaseContext);
+  const [emailAddress, setEmailAddress] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const isInvalid = password === "" || emailAddress === "";
@@ -13,6 +19,19 @@ export default function Signin() {
     event.preventDefault();
 
     //firebase work here
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then(() => {
+        // push tto the broswe page
+
+        history.push(ROUTES.BROSWE);
+      })
+      .catch((error) => {
+        setEmailAddress("");
+        setPassword("");
+        setError(error.message);
+      });
   };
 
   return (
@@ -39,9 +58,11 @@ export default function Signin() {
             </Form.Submit>
           </Form.Base>
           <Form.Text>
-              New to Netflix? <Form.Link>
-                  
-              </Form.Link>
+            New to Netflix? <Form.Link to="/signup">Sign Up Now.</Form.Link>
+            <Form.TextSmall>
+              This Page is Protected by Google reCaptha to ensure youre not a
+              bot. Learn More.
+            </Form.TextSmall>
           </Form.Text>
         </Form>
       </HeaderContainer>
