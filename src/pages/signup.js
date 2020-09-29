@@ -3,7 +3,7 @@ import { FooterContainer } from '../containers/footer';
 import { HeaderContainer } from "../containers/header";
 
 
-export default function Signin() {
+export default function Signup() {
     
         return <> <HeaderContainer>Helllo from the is sign in </
         HeaderContainer><FooterContainer/></>
