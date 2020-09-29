@@ -36,7 +36,7 @@ export function BrowseContainer({ slides }) {
     } else {
       setSlideRows(slides[category]);
     }
-  }, [searchTerm]);
+  }, [category, searchTerm, slideRows, slides]);
 
   return profile.displayName ? (
     <>
