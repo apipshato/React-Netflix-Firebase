@@ -55,3 +55,19 @@ export const ButtonLink = styled(ReactRouterLink)`
     background: #f40612;
   }
 `;
+export const Feature =styled(Container)`
+Padding: 150px 0 500px 0;
+flex-direction: column;
+align-item: normal;
+width: 50%;
+
+@media (max-width: 1100px){
+  display: none;
+}
+`
+
+export const Text = styled.p`
+color : white;
+font-size: 22px;
+
+`
