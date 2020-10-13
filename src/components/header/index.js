@@ -1,11 +1,14 @@
 import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-import { Background, ButtonLink, Container, Logo,Feature,Text, } from "./styles/header";
+import { Background, ButtonLink, Container, Logo,Feature,Text,FeatureCallOut, } from "./styles/header";
 
 export default function Header({ bg = true, children, ...restProps }) {
   return bg ? <Background {...restProps}>{children} </Background> : children;
 }
+Header.Feature = function HeaderFeatureCallOut({ childern, ...restProps }) {
+  return <FeatureCallOut {...restProps}>{childern}</FeatureCallOut>;
+};
 Header.Feature = function HeaderFeature({ childern, ...restProps }) {
   return <Feature {...restProps}>{childern}</Feature>;
 };
